@@ -5,11 +5,11 @@ $(function() {
     $.getJSON($SCRIPT_ROOT + '/getData', {
       url: $('input[name="url"]').val(),
     }, function(data) {
-        // console.log(data)
+        console.log(data)
         var table=$('#res tbody');
         var html="";
         for(i=0;i<data.length;i++){
-          // console.log(data[i]['title'])
+          console.log(data[i]['title'])
           var name=data[i]['title']+" "+data[i]['pagename']
           html+=("<tr><td>"+
             "<button class='btn btn-default cast' value='"+data[i]['cid']+
@@ -28,6 +28,7 @@ $(function() {
             cid: cid
           },function(data){
             var regex=/rate=(.*)/g;
+            console.log(data[0])
             var match=regex.exec(data[0]);
             if(match!=null){console.log('rate='+match[1]);}
             startPlayback(data[0],name,img);
