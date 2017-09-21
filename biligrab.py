@@ -43,7 +43,7 @@ def get_media_urls(cid):
 	params_str = 'cid={}&player=1&quality={}&ts={}'.format(cid, quality, ts)
 	chksum = hashlib.md5(bytes(params_str+SEC1, 'utf8')).hexdigest()
 	url = api_url + params_str + '&sign=' + chksum
-	print(url)
+	# print(url)
 	req = urllib.request.Request(url=url,headers=fake_headers)
 	response = urllib.request.urlopen(req, timeout=120)
 	data = str(response.read())
@@ -56,7 +56,6 @@ def get_media_urls(cid):
 		urls.append(match.replace('platform=pc','platform=iphone'))
 	return urls
 
-print(get_media_urls(17594692))
 
 def getCid(aid):
 	'''Request the cid of the video
